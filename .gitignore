@@ -7,3 +7,5 @@ Temp
 UserSettings
 .vs
 .vsconfig
+Assembly-CSharp.csproj
+space_shooter.sln
