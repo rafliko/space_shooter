@@ -58,6 +58,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Move.cs" />
     <Compile Include="Assets\Scripts\Laser.cs" />
+    <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Timer.cs" />
+    <Compile Include="Assets\Scripts\Global.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
