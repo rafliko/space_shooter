@@ -163,6 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   red: {fileID: 586467126111898422, guid: 1872bb9f25fa013428f6e44501ab57c0, type: 3}
+  green: {fileID: 1137015901198473199, guid: 2d15a2a5dbb7b9d4fb934124dc9004b6, type: 3}
+  black: {fileID: 8974549957438539332, guid: 3faef1d9784fa5841b4e7e5092515cde, type: 3}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -316,6 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab46272b724a1994483f7ef7798fac11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 7
   laser: {fileID: 2942022293052549980, guid: 0b2b44f5d8aca9643a02cd9cfd09f607, type: 3}
 --- !u!61 &862283383
 BoxCollider2D:

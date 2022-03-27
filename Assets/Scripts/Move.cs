@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    float speed = 7;
+    public float speed;
     public Transform laser;
 
     // Start is called before the first frame update

@@ -10,8 +10,8 @@ public class Laser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (tag == "plaser") dir = Vector3.right;
-        if (tag == "elaser") dir = Vector3.left;
+        if (name == "laserBlue(Clone)") dir = Vector3.right;
+        if (name == "laserRed(Clone)") dir = Vector3.left;
     }
 
     // Update is called once per frame
@@ -23,15 +23,13 @@ public class Laser : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("col");
-
-        if (collision.gameObject.tag == "enemy" && tag=="plaser")
+        if (collision.gameObject.tag == "enemy" && name == "laserBlue(Clone)")
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.tag == "Player" && tag=="elaser")
+        if (collision.gameObject.tag == "Player" && name == "laserRed(Clone)")
         {
             collision.gameObject.transform.position = new Vector3(-8.5f, 0f, 0f);
             Destroy(gameObject);
