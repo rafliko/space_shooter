@@ -25,6 +25,7 @@ public class Game : MonoBehaviour
     {
         gameTime = 0f;
         playerHealth = 3;
+        bossHealth = bossMaxHealth;
         score = 0;
         level = 1;
     }
@@ -37,10 +38,10 @@ public class Game : MonoBehaviour
         score_t.text = "Score:  " + score.ToString();
         level_t.text = "Level:  " + level.ToString();
 
-        if (gameTime <= levelTime) progress.GetComponent<Slider>().value = gameTime / levelTime;
+        if (gameTime < levelTime) progress.GetComponent<Slider>().value = gameTime / levelTime;
         else progress.GetComponent<Slider>().value = bossHealth / (float)bossMaxHealth;
         
-        if(playerHealth == 0)
+        if(playerHealth <= 0)
         {
             SceneManager.LoadScene("gameOver", LoadSceneMode.Single);
         }

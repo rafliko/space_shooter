@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            Game.score += 10;
             collision.gameObject.transform.position = new Vector3(-8.5f, 0f, 0f);
             Destroy(gameObject);
             Game.playerHealth--;
