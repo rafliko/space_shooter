@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         transform.position += dir * Time.deltaTime * speed;
-        if (transform.position.x < -Global.max_x) Destroy(gameObject);
+        if (transform.position.x < -8.5f) Destroy(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour
         {
             collision.gameObject.transform.position = new Vector3(-8.5f, 0f, 0f);
             Destroy(gameObject);
+            Game.playerHealth--;
         }
     }
 
