@@ -7,12 +7,15 @@ public class Enemy : MonoBehaviour
     public float speed;
     public int shootChance;
     public Transform laser;
+    public GameObject explosion;
     Vector3 dir = Vector3.left;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (name == "black(Clone)") dir = new Vector3(-1,Random.Range(-0.2f,0.2f),0);
+        if (name == "blue(Clone)") dir = new Vector3(-1,Random.Range(-0.2f,0.2f),0);
+        speed += Game.level * 0.3f;
+        shootChance += Game.level * 2;
         InvokeRepeating("Shoot", 0, 0.5f);
     }
 
@@ -28,7 +31,9 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Game.score += 10;
+            Instantiate(explosion, collision.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             collision.gameObject.transform.position = new Vector3(-8.5f, 0f, 0f);
+            Instantiate(explosion, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             Destroy(gameObject);
             Game.playerHealth--;
         }
@@ -36,7 +41,7 @@ public class Enemy : MonoBehaviour
 
     void Shoot()
     {
-        if(Random.Range(1,100/shootChance+1)==1)
+        if (Random.Range(0f, 1f) < shootChance/100f)
         {
             Instantiate(laser, new Vector3(transform.position.x - 1.7f, transform.position.y, 0), Quaternion.Euler(new Vector3(0, 0, 90)));
         }

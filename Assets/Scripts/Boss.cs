@@ -7,7 +7,15 @@ public class Boss : MonoBehaviour
     public float speed;
     public int shootChance;
     public Transform laser;
+    public GameObject explosion;
     Vector3 dir = Vector3.left;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        speed += Game.level * 0.3f;
+        shootChance += Game.level * 2;
+    }
 
     // Update is called once per frame
     void Update()
@@ -34,6 +42,8 @@ public class Boss : MonoBehaviour
             Spawner.bossSpawned = false;
             Game.bossHealth = Game.bossMaxHealth;
             Game.bossImmune = true;
+            var exp = Instantiate(explosion, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            exp.transform.localScale = new Vector3(2,2,1);
             Destroy(gameObject);
         }
         transform.position += dir * Time.deltaTime * speed;
@@ -43,6 +53,7 @@ public class Boss : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            Instantiate(explosion, collision.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             collision.gameObject.transform.position = new Vector3(-8.5f, 0f, 0f);
             Game.playerHealth--;
             Game.bossHealth--;
@@ -51,7 +62,7 @@ public class Boss : MonoBehaviour
 
     void Shoot()
     {
-        if (Random.Range(1, 100 / shootChance + 1) == 1)
+        if (Random.Range(0f, 1f) < shootChance / 100f)
         {
             Instantiate(laser, new Vector3(transform.position.x - 1.7f, transform.position.y+1f, 0), Quaternion.Euler(new Vector3(0, 0, 90)));
             Instantiate(laser, new Vector3(transform.position.x - 1.7f, transform.position.y-1f, 0), Quaternion.Euler(new Vector3(0, 0, 90)));

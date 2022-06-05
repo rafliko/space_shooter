@@ -11,23 +11,26 @@ public class Game : MonoBehaviour
     public Text score_t;
     public Text level_t;
 
-    public static int bossHealth = 40;
     public static int bossMaxHealth = 40;
+    public static int bossHealth = bossMaxHealth;
     public static bool bossImmune = true;
     public static float gameTime = 0f;
-    public static int playerHealth = 3;
-    public static int score = 0;
     public static float levelTime = 20f;
-    public static int level = 1;
+    public static int playerHealth = 4;
+    public static int score = 0;
+    public static int level = 0;
 
 
     void Start()
     {
-        gameTime = 0f;
-        playerHealth = 3;
+        bossMaxHealth = 40;
         bossHealth = bossMaxHealth;
+        bossImmune = true;
+        gameTime = 0f;
+        levelTime = 20f;
+        playerHealth = 4;
         score = 0;
-        level = 1;
+        level = 0;
     }
 
     // Update is called once per frame
@@ -36,7 +39,7 @@ public class Game : MonoBehaviour
         gameTime += Time.deltaTime;
         lives.text = "Lives:  " + playerHealth;
         score_t.text = "Score:  " + score.ToString();
-        level_t.text = "Level:  " + level.ToString();
+        level_t.text = "Level:  " + (level+1).ToString();
 
         if (gameTime < levelTime) progress.GetComponent<Slider>().value = gameTime / levelTime;
         else progress.GetComponent<Slider>().value = bossHealth / (float)bossMaxHealth;

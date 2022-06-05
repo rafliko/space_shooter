@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Laser : MonoBehaviour
 {
+    public GameObject explosion;
     float speed = 12;
     Vector3 dir;
 
@@ -27,6 +28,7 @@ public class Laser : MonoBehaviour
         if (collision.gameObject.tag == "enemy" && name == "laserBlue(Clone)")
         {
             Game.score += 10;
+            Instantiate(explosion, collision.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
@@ -34,6 +36,7 @@ public class Laser : MonoBehaviour
         if (collision.gameObject.tag == "Player" && name == "laserRed(Clone)")
         {
             Game.playerHealth--;
+            Instantiate(explosion, collision.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             collision.gameObject.transform.position = new Vector3(-8.5f, 0f, 0f);
             Destroy(gameObject);
         }
