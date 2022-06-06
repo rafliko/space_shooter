@@ -27,6 +27,15 @@ public class Enemy : MonoBehaviour
         if (transform.position.x < -10f) Destroy(gameObject);
     }
 
+    private void OnMouseDown()
+    {
+        if (SceneManager.GetActiveScene().name == "menu")
+        {
+            Instantiate(explosion, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            Destroy(gameObject);
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
