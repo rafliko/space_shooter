@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -16,14 +17,14 @@ public class Enemy : MonoBehaviour
         if (name == "blue(Clone)") dir = new Vector3(-1,Random.Range(-0.2f,0.2f),0);
         speed += Game.level * 0.3f;
         shootChance += Game.level * 2;
-        InvokeRepeating("Shoot", 0, 0.5f);
+        if(SceneManager.GetActiveScene().name != "menu") InvokeRepeating("Shoot", 0, 0.5f);
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position += dir * Time.deltaTime * speed;
-        if (transform.position.x < -8.5f) Destroy(gameObject);
+        if (transform.position.x < -10f) Destroy(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D collision)

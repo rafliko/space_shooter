@@ -10,7 +10,7 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Z))
         {
             Instantiate(laser, new Vector3(transform.position.x + 0.7f, transform.position.y, 0), Quaternion.Euler(new Vector3(0, 0, -90)));
         }

@@ -15,10 +15,12 @@ public class Game : MonoBehaviour
     public static int bossHealth = bossMaxHealth;
     public static bool bossImmune = true;
     public static float gameTime = 0f;
-    public static float levelTime = 20f;
-    public static int playerHealth = 4;
+    public static float levelTime = 30f;
+    public static int playerHealth = 3;
     public static int score = 0;
     public static int level = 0;
+    public static float svol = 1f;
+    public static float mvol = 1f;
 
 
     void Start()
@@ -27,10 +29,12 @@ public class Game : MonoBehaviour
         bossHealth = bossMaxHealth;
         bossImmune = true;
         gameTime = 0f;
-        levelTime = 20f;
-        playerHealth = 4;
+        levelTime = 30f;
+        playerHealth = 3;
         score = 0;
         level = 0;
+
+        GetComponent<AudioSource>().volume = mvol;
     }
 
     // Update is called once per frame
@@ -47,6 +51,11 @@ public class Game : MonoBehaviour
         if(playerHealth <= 0)
         {
             SceneManager.LoadScene("gameOver", LoadSceneMode.Single);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("menu", LoadSceneMode.Single);
         }
     }
 }

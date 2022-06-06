@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
         if(Game.gameTime >= Game.levelTime && !bossSpawned)
         {
             CancelInvoke();
-            Instantiate(boss, new Vector3(9.5f, 0, 0), Quaternion.Euler(new Vector3(0, 0, 90)));
+            Instantiate(boss, new Vector3(10f, 0, 0), Quaternion.Euler(new Vector3(0, 0, 90)));
             bossSpawned = true;
             isSpawning = false;
         }
@@ -37,6 +37,6 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
-        Instantiate(enemy[Random.Range(0, enemy.Length)], new Vector3(9.5f, Random.Range(-4.5f, 4.5f), 0), Quaternion.Euler(new Vector3(0, 0, 90)));
+        Instantiate(enemy[Random.Range(0, enemy.Length)], new Vector3(10f, Random.Range(-4.5f, 4.5f), 0), Quaternion.Euler(new Vector3(0, 0, 90)));
     }
 }

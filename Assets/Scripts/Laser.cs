@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Laser : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Laser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<AudioSource>().volume = Game.svol;
         if (name == "laserBlue(Clone)") dir = Vector3.right;
         if (name == "laserRed(Clone)") dir = Vector3.left;
     }
@@ -20,7 +22,7 @@ public class Laser : MonoBehaviour
     void Update()
     {
         transform.position += dir * Time.deltaTime * speed;
-        if (transform.position.x > 8.5f || transform.position.x < -8.5f) Destroy(gameObject);
+        if (transform.position.x > 10f || transform.position.x < -10f) Destroy(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
