@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
     public Transform[] enemy;
     public Transform boss;
+    public Transform player;
 
     public static bool bossSpawned = false;
     public static bool isSpawning = false;
@@ -33,10 +34,20 @@ public class Spawner : MonoBehaviour
             else InvokeRepeating("Spawn", 0, 0.1f);
             isSpawning = true;
         }
+        if (Game.playerDestroyed)
+        {
+            Game.playerDestroyed = false;
+            Invoke("SpawnPlayer",1f);
+        }
     }
 
     void Spawn()
     {
         Instantiate(enemy[Random.Range(0, enemy.Length)], new Vector3(10f, Random.Range(-4.5f, 4.5f), 0), Quaternion.Euler(new Vector3(0, 0, 90)));
+    }
+
+    void SpawnPlayer()
+    {
+        Instantiate(player, new Vector3(0,0,0), Quaternion.Euler(new Vector3(0, 0, -90)));
     }
 }

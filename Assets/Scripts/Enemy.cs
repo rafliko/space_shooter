@@ -42,8 +42,9 @@ public class Enemy : MonoBehaviour
         {
             Game.score += 10;
             Instantiate(explosion, collision.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            collision.gameObject.transform.position = new Vector3(-8.5f, 0f, 0f);
             Instantiate(explosion, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            Destroy(collision.gameObject);
+            Game.playerDestroyed = true;
             Destroy(gameObject);
             Game.playerHealth--;
         }

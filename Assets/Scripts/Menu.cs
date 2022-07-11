@@ -28,6 +28,8 @@ public class Menu : MonoBehaviour
         back.GetComponent<Button>().onClick.AddListener(BackClick);
         exit.GetComponent<Button>().onClick.AddListener(ExitClick);
         InvokeRepeating("Spawn", 0, 1.5f);
+        Cursor.visible = true;
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
 
     void Update()
@@ -35,10 +37,14 @@ public class Menu : MonoBehaviour
         Game.svol = svol_slider.value;
         Game.mvol = mvol_slider.value;
         GetComponent<AudioSource>().volume = Game.mvol;
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && opts.enabled)
         {
             opts.enabled = false;
             menu.enabled = true;
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && menu.enabled)
+        {
+            Application.Quit();
         }
     }
 

@@ -11,7 +11,7 @@ public class Game : MonoBehaviour
     public Text score_t;
     public Text level_t;
 
-    public static int bossMaxHealth = 40;
+    public static int bossMaxHealth = 30;
     public static int bossHealth = bossMaxHealth;
     public static bool bossImmune = true;
     public static float gameTime = 0f;
@@ -21,6 +21,7 @@ public class Game : MonoBehaviour
     public static int level = 0;
     public static float svol = 1f;
     public static float mvol = 1f;
+    public static bool playerDestroyed = false;
 
 
     void Start()
@@ -35,6 +36,8 @@ public class Game : MonoBehaviour
         level = 0;
 
         GetComponent<AudioSource>().volume = mvol;
+        Cursor.visible = false;
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
 
     // Update is called once per frame

@@ -39,7 +39,8 @@ public class Laser : MonoBehaviour
         {
             Game.playerHealth--;
             Instantiate(explosion, collision.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            collision.gameObject.transform.position = new Vector3(-8.5f, 0f, 0f);
+            Destroy(collision.gameObject);
+            Game.playerDestroyed = true;
             Destroy(gameObject);
         }
 

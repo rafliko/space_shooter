@@ -17,6 +17,8 @@ public class GameOver : MonoBehaviour
         retry.GetComponent<Button>().onClick.AddListener(RetryClick);
         exit.GetComponent<Button>().onClick.AddListener(ExitClick);
         score_t.text = "Score:  "+Game.score.ToString();
+        Cursor.visible = true;
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
 
     void Update()
@@ -34,6 +36,6 @@ public class GameOver : MonoBehaviour
 
     void ExitClick()
     {
-        Application.Quit();
+        SceneManager.LoadScene("menu", LoadSceneMode.Single);
     }
 }
